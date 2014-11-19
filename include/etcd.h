@@ -31,9 +31,13 @@ public:
   GetOption();
   ~GetOption();
   static GetOption Default();
+  bool IsDir() const {return is_dir;}
+  bool IsWait() const {return is_wait;}
+  bool IsRecursive() const {return is_recursive;}
+private:
   bool is_dir;
-  bool wait;
-  bool recursive;
+  bool is_wait;
+  bool is_recursive;
 };
 
 class SetOption {
@@ -41,7 +45,25 @@ public:
   SetOption();
   ~SetOption();
   static SetOption Default();
-  int32_t ttl;
+  bool IsSetTTL() const {return is_set_ttl;}
+  bool IsUnSetTTL() const {return is_unset_ttl;}
+  void SetTTL(unsigned int ttl_) {
+    is_set_ttl = true;
+    ttl = ttl_;
+    is_unset_ttl = false;
+  }
+  void UnsetTTL() {
+    is_unset_ttl = true;
+    is_set_ttl = false;
+  }
+  bool IsDir() const {
+    return is_dir;
+  }
+  unsigned int GetTTL() const {return ttl;}
+private:
+  unsigned int ttl;
+  bool is_set_ttl;
+  bool is_unset_ttl;
   bool is_dir;
 };
 
@@ -50,7 +72,17 @@ public:
   DeleteOption();
   ~DeleteOption();
   static DeleteOption Default();
+  bool IsDir() const {return is_dir;}
+private:
   bool is_dir;
+};
+
+class Node {
+public:
+  unsigned int createdIndex;
+  unsigned int modifiedIndex;
+  std::string key;
+  std::string value;
 };
 
 
@@ -60,16 +92,19 @@ public:
   //explicit Client(const std::string& file);
   virtual ~Client();
   // Get the key
-  Try<rapidjson::Document> Get(
+  Try<bool> Get(
+      rapidjson::Document& _return,
       const std::string& key,
       const GetOption& option = GetOption::Default());
 
-  Try<rapidjson::Document> Set(
+  Try<bool> Set(
+      rapidjson::Document& _return,
       const std::string& key,
       const std::string& value,
       const SetOption& = SetOption::Default());
 
-  Try<rapidjson::Document> Delete(
+  Try<bool> Delete(
+      rapidjson::Document& _return,
       const std::string& key,
       const DeleteOption& = DeleteOption::Default());
 

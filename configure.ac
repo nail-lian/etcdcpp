@@ -51,6 +51,7 @@ AC_CHECK_FUNCS([clock_gettime dup2 getcwd gethostname localtime_r memset mkdir r
 AC_CONFIG_FILES([Makefile
                  src/Makefile
                  cli/Makefile
+                 tests/Makefile
                  ])
 
 AC_OUTPUT

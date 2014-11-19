@@ -5,9 +5,6 @@ libetcdcpp_a_SOURCES = \
 
 libetcdcpp_a_CPPFLAGS = \
 					   -static \
-					   -L/usr/local/lib -lcurl \
 					   -I../include \
+					   -L/lib64 -lcurl \
 					   -I../3rdparty/include
-
-libetcdcpp_a_LIBADD = \
-					   -L/usr/local/lib -lcurl
