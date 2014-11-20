@@ -1,18 +1,10 @@
-# Etcdcpp
-etcd api for cpp
+/*
+ * main.cpp
+ * Copyright (C) 2014 wangyongliang <wangyongliang@WANGYL-JD>
+ *
+ * Distributed under terms of the MIT license.
+ */
 
-## Dependency
-
-* rapidjson: https://github.com/miloyip/rapidjson
-* libcurl: 
-* stl:
-
-## Usage
-* install libcurl
-* copye etcd.h and etcd.cpp and rapidjson headers into your project
-
-## Example
-```cpp
 #include "../include/etcd.h"
 #include "../3rdparty/include/rapidjson/stringbuffer.h"
 #include "../3rdparty/include/rapidjson/writer.h"
@@ -59,18 +51,4 @@ int main() {
 
 }
 
-```
 
-## Run test
-* dependency: autoconf >= 2.69, automake >= 1.14, gtest and gmock
-* autoreconf
-* ./configure
-* ./make check
-* ./tests/tests
-
-## TODO
-* Implement CAS API
-* Write unittest for rest api
-
-## Other
-* developed in ubuntu 14.04
