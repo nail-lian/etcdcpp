@@ -12,12 +12,12 @@ etcd api for cpp
 * copye etcd.h and etcd.cpp and rapidjson headers into your project
 
 ## Example
-‘’’cpp
+```cpp
 #include <iostream>
 int main() {
   return 0;
 }
-‘’’
+```
 
 ## Run test
 * dependency: autoconf >= 2.69, automake >= 1.14, gtest and gmock
