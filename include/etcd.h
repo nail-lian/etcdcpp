@@ -1,6 +1,6 @@
 /*
  * etcd.h
- * Copyright (C) 2014 wangyongliang <wangyongliang@WANGYL-JD>
+ * Copyright (C) 2014 wangyongliang <wangyongliang.wyl@gmail.com>
  *
  * Distributed under terms of the MIT license.
  */
@@ -10,7 +10,7 @@
 
 #include <string>
 #include <vector>
-#include "../3rdparty/include/stout/try.hpp"
+#include <map>
 #include "../3rdparty/include/rapidjson/document.h"
 
 namespace etcd {
@@ -29,21 +29,30 @@ private:
 class GetOption{
 public:
   GetOption();
-  ~GetOption();
+  virtual ~GetOption();
   static GetOption Default();
   bool IsDir() const {return is_dir;}
   bool IsWait() const {return is_wait;}
   bool IsRecursive() const {return is_recursive;}
+  bool IsConsistent() const {return is_consistent;}
+  bool IsQuorum() const {return is_quorum;}
+  void SetConsistent(bool flag) {is_consistent=flag;}
+  void SetQuorum(bool flag) {is_quorum = flag;}
+  void SetWait(bool flag) {is_wait = flag;}
+  void SetDir(bool flag) {is_dir = flag;}
+  void SetRecursive(bool flag) {is_recursive = flag;}
 private:
   bool is_dir;
   bool is_wait;
   bool is_recursive;
+  bool is_consistent;
+  bool is_quorum;
 };
 
 class SetOption {
 public:
   SetOption();
-  ~SetOption();
+  virtual ~SetOption();
   static SetOption Default();
   bool IsSetTTL() const {return is_set_ttl;}
   bool IsUnSetTTL() const {return is_unset_ttl;}
@@ -59,30 +68,47 @@ public:
   bool IsDir() const {
     return is_dir;
   }
+  void SetPrevInde(unsigned int index) {
+    prevIndex = index;
+  }
+
+  void SetPrevValue(const std::string& value) {
+    prevValue = value;
+  }
+
+  void SetPrevExist(bool exist) {
+    prevExist = exist;
+  }
   unsigned int GetTTL() const {return ttl;}
+  void SetDir(bool flag) { is_dir = flag;}
 private:
   unsigned int ttl;
   bool is_set_ttl;
   bool is_unset_ttl;
   bool is_dir;
+  unsigned int prevIndex;
+  std::string prevValue;
+  bool prevExist;
 };
 
 class DeleteOption {
 public:
   DeleteOption();
-  ~DeleteOption();
+  virtual ~DeleteOption();
   static DeleteOption Default();
   bool IsDir() const {return is_dir;}
+  bool IsRecursive() const {return is_recursive;}
+  void SetDir(bool flag) {is_dir = flag;}
+  void SetPrevIndex(unsigned int index) {prevIndex = index;}
+  void SetPrevValue(const std::string& value) {prevValue = value;}
+  void SetPrevExist(bool flag) {prevExist = flag;}
+  void SetRecursive(bool flag) {is_recursive = flag;}
 private:
   bool is_dir;
-};
-
-class Node {
-public:
-  unsigned int createdIndex;
-  unsigned int modifiedIndex;
-  std::string key;
-  std::string value;
+  bool is_recursive;
+  unsigned int prevIndex;
+  std::string prevValue;
+  bool prevExist;
 };
 
 
@@ -92,30 +118,35 @@ public:
   //explicit Client(const std::string& file);
   virtual ~Client();
   // Get the key
-  Try<bool> Get(
-      rapidjson::Document& _return,
+  bool Get(rapidjson::Document& _return,
       const std::string& key,
       const GetOption& option = GetOption::Default());
 
-  Try<bool> Set(
-      rapidjson::Document& _return,
+  bool Set(rapidjson::Document& _return,
       const std::string& key,
       const std::string& value,
       const SetOption& = SetOption::Default());
 
-  Try<bool> Delete(
-      rapidjson::Document& _return,
+  bool Delete(rapidjson::Document& _return,
       const std::string& key,
       const DeleteOption& = DeleteOption::Default());
 
-  //Try<rapidjson::Document> CompareAndSwap();
-  //Try<rapidjson::Document> CompareAndDelete();
-  //Try<rapidjson::Document> MakeDir(
-      //const std::string& key,
-      //const SetOption& option=SetOption::Default());
+  // shortcuts
+  bool GetValue(std::string& _return, const std::string& key, bool consistent=false, bool quorum=false, bool wait=false);
 
-  //Try<rapidjson::Document> ListDir(const std::string& key, const GetOption& option=GetOption::Default());
-  //Try<rapidjson::Document> RemoveDir(const std::string& key, const DeleteOption& option=DeleteOption::Default());
+  bool WatchValue(std::string& _return, const std::string& key, bool consistent=false, bool quorum=false);
+
+  bool SetValue(const std::string& key, const std::string& value);
+  bool SetValue(const std::string& key, const std::string& value, unsigned int ttl);
+  bool UnsetTTL(const std::string& key, const std::string& value);
+  bool DeleteValue(const std::string& key);
+  //bool CompareAndSwap(const std::string& key, const std::string& value, unsigned int prevIndex);
+  //bool CompareAndDelete(const std::string& key, unsigned int prevIndex);
+
+  // directory
+  bool MakeDir(const std::string& key);
+  bool ListDir(std::map<std::string, std::string>& _return, const std::string& key, bool recursive=false);
+  bool RemoveDir(const std::string& key, bool recursive=false);
 private:
   std::vector<Cluster> clusters;
 };

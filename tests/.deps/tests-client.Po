@@ -65,9 +65,14 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
- /usr/include/c++/4.8/bits/vector.tcc \
- ../include/../3rdparty/include/stout/try.hpp /usr/include/assert.h \
- /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/c++/4.8/bits/vector.tcc /usr/include/c++/4.8/map \
+ /usr/include/c++/4.8/bits/stl_tree.h /usr/include/c++/4.8/bits/stl_map.h \
+ /usr/include/c++/4.8/bits/stl_multimap.h \
+ ../include/../3rdparty/include/rapidjson/document.h \
+ ../include/../3rdparty/include/rapidjson/reader.h \
+ ../include/../3rdparty/include/rapidjson/rapidjson.h \
+ /usr/include/c++/4.8/cstdlib /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/sys/select.h \
@@ -77,8 +82,19 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib.h \
- /usr/include/c++/4.8/iostream /usr/include/c++/4.8/ostream \
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/c++/4.8/cstring \
+ /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/string3.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
+ /usr/include/inttypes.h /usr/include/c++/4.8/cassert \
+ /usr/include/assert.h \
+ ../include/../3rdparty/include/rapidjson/allocators.h \
+ ../include/../3rdparty/include/rapidjson/encodings.h \
+ ../include/../3rdparty/include/rapidjson/internal/meta.h \
+ ../include/../3rdparty/include/rapidjson/internal/pow10.h \
+ ../include/../3rdparty/include/rapidjson/internal/stack.h \
+ ../include/../3rdparty/include/rapidjson/error/error.h \
+ ../include/../3rdparty/include/rapidjson/internal/strfunc.h \
+ /usr/include/c++/4.8/iterator /usr/include/c++/4.8/ostream \
  /usr/include/c++/4.8/ios /usr/include/c++/4.8/bits/ios_base.h \
  /usr/include/c++/4.8/bits/locale_classes.h \
  /usr/include/c++/4.8/bits/locale_classes.tcc \
@@ -93,21 +109,6 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
  /usr/include/c++/4.8/bits/basic_ios.tcc \
  /usr/include/c++/4.8/bits/ostream.tcc /usr/include/c++/4.8/istream \
  /usr/include/c++/4.8/bits/istream.tcc \
- ../include/../3rdparty/include/rapidjson/document.h \
- ../include/../3rdparty/include/rapidjson/reader.h \
- ../include/../3rdparty/include/rapidjson/rapidjson.h \
- /usr/include/c++/4.8/cstdlib /usr/include/c++/4.8/cstring \
- /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/string3.h \
- /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
- /usr/include/inttypes.h /usr/include/c++/4.8/cassert \
- ../include/../3rdparty/include/rapidjson/allocators.h \
- ../include/../3rdparty/include/rapidjson/encodings.h \
- ../include/../3rdparty/include/rapidjson/internal/meta.h \
- ../include/../3rdparty/include/rapidjson/internal/pow10.h \
- ../include/../3rdparty/include/rapidjson/internal/stack.h \
- ../include/../3rdparty/include/rapidjson/error/error.h \
- ../include/../3rdparty/include/rapidjson/internal/strfunc.h \
- /usr/include/c++/4.8/iterator \
  /usr/include/c++/4.8/bits/stream_iterator.h \
  ../3rdparty/include/gtest/gtest.h /usr/include/c++/4.8/limits \
  ../3rdparty/include/gtest/internal/gtest-internal.h \
@@ -117,9 +118,9 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
  /usr/include/x86_64-linux-gnu/bits/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
  /usr/include/x86_64-linux-gnu/sys/stat.h \
- /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/c++/4.8/sstream \
- /usr/include/c++/4.8/bits/sstream.tcc /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/c++/4.8/iostream \
+ /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
  /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/strings.h \
@@ -135,7 +136,7 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/c++/4.8/iomanip /usr/include/c++/4.8/set \
- /usr/include/c++/4.8/bits/stl_tree.h /usr/include/c++/4.8/bits/stl_set.h \
+ /usr/include/c++/4.8/bits/stl_set.h \
  /usr/include/c++/4.8/bits/stl_multiset.h \
  ../3rdparty/include/gtest/internal/gtest-string.h \
  ../3rdparty/include/gtest/internal/gtest-filepath.h \
@@ -328,9 +329,21 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
 
 /usr/include/c++/4.8/bits/vector.tcc:
 
-../include/../3rdparty/include/stout/try.hpp:
+/usr/include/c++/4.8/map:
 
-/usr/include/assert.h:
+/usr/include/c++/4.8/bits/stl_tree.h:
+
+/usr/include/c++/4.8/bits/stl_map.h:
+
+/usr/include/c++/4.8/bits/stl_multimap.h:
+
+../include/../3rdparty/include/rapidjson/document.h:
+
+../include/../3rdparty/include/rapidjson/reader.h:
+
+../include/../3rdparty/include/rapidjson/rapidjson.h:
+
+/usr/include/c++/4.8/cstdlib:
 
 /usr/include/stdlib.h:
 
@@ -358,7 +371,37 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
 
 /usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
-/usr/include/c++/4.8/iostream:
+/usr/include/c++/4.8/cstring:
+
+/usr/include/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/string3.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/inttypes.h:
+
+/usr/include/c++/4.8/cassert:
+
+/usr/include/assert.h:
+
+../include/../3rdparty/include/rapidjson/allocators.h:
+
+../include/../3rdparty/include/rapidjson/encodings.h:
+
+../include/../3rdparty/include/rapidjson/internal/meta.h:
+
+../include/../3rdparty/include/rapidjson/internal/pow10.h:
+
+../include/../3rdparty/include/rapidjson/internal/stack.h:
+
+../include/../3rdparty/include/rapidjson/error/error.h:
+
+../include/../3rdparty/include/rapidjson/internal/strfunc.h:
+
+/usr/include/c++/4.8/iterator:
 
 /usr/include/c++/4.8/ostream:
 
@@ -398,44 +441,6 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
 
 /usr/include/c++/4.8/bits/istream.tcc:
 
-../include/../3rdparty/include/rapidjson/document.h:
-
-../include/../3rdparty/include/rapidjson/reader.h:
-
-../include/../3rdparty/include/rapidjson/rapidjson.h:
-
-/usr/include/c++/4.8/cstdlib:
-
-/usr/include/c++/4.8/cstring:
-
-/usr/include/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/string3.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h:
-
-/usr/include/stdint.h:
-
-/usr/include/inttypes.h:
-
-/usr/include/c++/4.8/cassert:
-
-../include/../3rdparty/include/rapidjson/allocators.h:
-
-../include/../3rdparty/include/rapidjson/encodings.h:
-
-../include/../3rdparty/include/rapidjson/internal/meta.h:
-
-../include/../3rdparty/include/rapidjson/internal/pow10.h:
-
-../include/../3rdparty/include/rapidjson/internal/stack.h:
-
-../include/../3rdparty/include/rapidjson/error/error.h:
-
-../include/../3rdparty/include/rapidjson/internal/strfunc.h:
-
-/usr/include/c++/4.8/iterator:
-
 /usr/include/c++/4.8/bits/stream_iterator.h:
 
 ../3rdparty/include/gtest/gtest.h:
@@ -461,6 +466,8 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
 /usr/include/x86_64-linux-gnu/sys/stat.h:
 
 /usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/c++/4.8/iostream:
 
 /usr/include/c++/4.8/sstream:
 
@@ -513,8 +520,6 @@ tests-client.o: client.cpp /usr/include/stdc-predef.h ../include/etcd.h \
 /usr/include/c++/4.8/iomanip:
 
 /usr/include/c++/4.8/set:
-
-/usr/include/c++/4.8/bits/stl_tree.h:
 
 /usr/include/c++/4.8/bits/stl_set.h:
 

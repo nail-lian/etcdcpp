@@ -1,6 +1,6 @@
 /*
  * main.cpp
- * Copyright (C) 2014 wangyongliang <wangyongliang@WANGYL-JD>
+ * Copyright (C) 2014 wangyongliang <wangyongliang.wyl@gmail.com>
  *
  * Distributed under terms of the MIT license.
  */
